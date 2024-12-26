@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  handleLogin(): void {
-    alert('Login functionality is not implemented yet!');
+  constructor(private router: Router) {}
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 }
