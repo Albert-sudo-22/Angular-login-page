@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  id: string = '';
   users: any;
 
   constructor(private router: Router, private userService: UserService) {}
@@ -31,21 +32,16 @@ export class LoginComponent {
   goBack(): void {
     this.router.navigate(['']);
   }
-
-  navigateToUser(): void {
-    this.router.navigate(['/user']);
-  }
-
-  handleLogin(): void {
+  
+  login(): void {
     if (this.username && this.password) {
-      // Example authentication logic
       const user = this.users.find(
         (u: any) =>
           u.username === this.username && u.password === this.password
       );
 
       if (user) {
-        this.navigateToUser();
+        this.router.navigate(['/user', user.id]);
       } else {
         alert('Invalid username or password.');
       }
