@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+
+  constructor(private router: Router) {}
+
+  goBack(): void {
+    this.router.navigate(['']);
+  }
 
   handleLogin(): void {
     if (this.username && this.password) {
