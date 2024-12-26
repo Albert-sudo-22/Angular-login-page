@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../users.services';
+import { UserService } from '../user/users.services';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent {
     this.userService.fetchUsers().subscribe(
       (data) => {
         this.users = data.users;
+        console.log(data)
       },
       (error) => {
         console.error('Error fetching users', error);
@@ -36,7 +38,7 @@ export class LoginComponent {
   login(): void {
     if (this.username && this.password) {
       const user = this.users.find(
-        (u: any) =>
+        (u: User) =>
           u.username === this.username && u.password === this.password
       );
 
@@ -50,3 +52,5 @@ export class LoginComponent {
     }
   }
 }
+
+
