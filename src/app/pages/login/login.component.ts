@@ -23,7 +23,6 @@ export class LoginComponent {
     this.userService.fetchUsers().subscribe(
       (data) => {
         this.users = data.users;
-        console.log(data)
       },
       (error) => {
         console.error('Error fetching users', error);

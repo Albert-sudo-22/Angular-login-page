@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  user: any;
+  user!: User;
   Id?: number;
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute,) {}
 
@@ -20,7 +20,6 @@ export class UserComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.Id = params['id'];
-      console.log('Test ID:', this.Id);
     });
 
     this.userService.fetchUsers().subscribe(
